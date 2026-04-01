@@ -1,0 +1,221 @@
+:root {
+  --bg-deep: #0d1117;
+  --bg-card: #161b22;
+  --border: rgba(94, 234, 212, 0.22);
+  --accent: #5eead4;
+  --accent-dim: rgba(94, 234, 212, 0.12);
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg-deep);
+  overflow-x: hidden;
+}
+
+.bg-noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 2.25rem 2rem 2rem;
+  background: linear-gradient(145deg, var(--bg-card) 0%, #121820 100%);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(94, 234, 212, 0.08);
+}
+
+.card__glow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 120%;
+  height: 60%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, var(--accent-dim) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.card__avatar {
+  margin: 0 auto 1.25rem;
+  width: 150px;
+  height: 165px;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4));
+}
+
+.face--bear {
+  overflow: visible;
+}
+
+.face {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card__header {
+  margin-bottom: 0.75rem;
+}
+
+.card__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #fff 0%, #c8d4e0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card__role {
+  margin: 0.35rem 0 0;
+  font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  color: var(--accent);
+}
+
+.card__tagline {
+  margin: 0 0 1.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+.card__contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.contact {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-copy {
+  flex-shrink: 0;
+  padding: 0 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: rgba(94, 234, 212, 0.08);
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-copy:hover,
+.btn-copy:focus-visible {
+  background: rgba(94, 234, 212, 0.18);
+  color: #fff;
+  outline: none;
+}
+
+.contact:hover,
+.contact:focus-visible {
+  background: rgba(94, 234, 212, 0.08);
+  border-color: rgba(94, 234, 212, 0.25);
+  color: #fff;
+  outline: none;
+}
+
+.contact__icon {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.contact__icon--yt {
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+}
+
+.contact__text {
+  word-break: break-all;
+}
+
+.card__toast {
+  min-height: 1.25rem;
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.card__toast.is-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
